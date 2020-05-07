@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30011.22
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConnectingApps.DncWireMockDemo", "ConnectingApps.DncWireMockDemo\ConnectingApps.DncWireMockDemo.csproj", "{4CA4403E-073A-45AE-9611-2F26C2AB3D04}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConnectingApps.DncWireMockDemo.IntegrationTests", "ConnectingApps.DncWireMockDemo.IntegrationTests\ConnectingApps.DncWireMockDemo.IntegrationTests.csproj", "{0BAA6F95-5DF0-4281-8F3F-0CE3A9DCC415}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4CA4403E-073A-45AE-9611-2F26C2AB3D04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4CA4403E-073A-45AE-9611-2F26C2AB3D04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4CA4403E-073A-45AE-9611-2F26C2AB3D04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4CA4403E-073A-45AE-9611-2F26C2AB3D04}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0BAA6F95-5DF0-4281-8F3F-0CE3A9DCC415}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0BAA6F95-5DF0-4281-8F3F-0CE3A9DCC415}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0BAA6F95-5DF0-4281-8F3F-0CE3A9DCC415}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0BAA6F95-5DF0-4281-8F3F-0CE3A9DCC415}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {37BB08C1-74A5-42EE-BF4C-86BDE7162392}
+	EndGlobalSection
+EndGlobal
