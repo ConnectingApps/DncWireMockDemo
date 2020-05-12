@@ -1,14 +1,17 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <IsPackable>true</IsPackable>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <Version>3.1.0</Version>
+    <OutputType>Dll</OutputType>
     <Description>An AutoFixture inspired package to create instances for integration testing (not unit testing). Just create an instance of the Fixture class and this library does the work for you to trigger your code in the Startup and Program class. There is a create method to create a test instance and a freeze method to create external dependencies (services) with WireMock.NET .</Description>
-    <PackageLicenseFile>README.md</PackageLicenseFile>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <RepositoryUrl>https://github.com/ConnectingApps/DncWireMockDemo</RepositoryUrl>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Copyright>Copyright ©. Connecting Apps. All rights reserved</Copyright>
     <PackageDescription>An AutoFixture inspired package to create instances for integration testing (not unit testing). Just create an instance of the Fixture class and this library does the work for you to trigger your code in the Startup and Program class. There is a create method to create a test instance and a freeze method to create external dependencies (services) with WireMock.NET </PackageDescription>
+    <PackageProjectUrl>https://github.com/ConnectingApps/DncWireMockDemo#integrationfixture</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>
@@ -23,7 +26,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="..\README.md">
+    <None Include="..\LICENSE">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
