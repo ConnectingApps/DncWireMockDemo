@@ -8,6 +8,11 @@ using WireMock.Server;
 
 namespace ConnectingApps.IntegrationFixture
 {
+    /// <summary>
+    /// A fixture to create your dependencies.
+    /// Before creating, you may need to call the "FreezeServer" method to setup the behaviour of your external server.
+    /// </summary>
+    /// <typeparam name="TStartup">The Startup class of your program</typeparam>
     public class Fixture<TStartup> where TStartup : class
     {
         private readonly Dictionary<string, string> _configurationDictionary = new Dictionary<string, string>();
@@ -36,6 +41,12 @@ namespace ConnectingApps.IntegrationFixture
             return serviceScope;
         }
 
+
+        /// <summary>
+        /// Create a running WireMock Server and ensure your code will use it by changing the configuration parameter. You can now setup the behaviour of it: https://github.com/WireMock-Net/WireMock.Net/wiki/Stubbing#stubbing
+        /// </summary>
+        /// <param name="configurationParameter">This is typically something like "ExternalService:Url"</param>
+        /// <returns>The running and self-hosted WireMock server</returns>
         public FluentMockServer FreezeServer(string configurationParameter)
         {
             var server = FluentMockServer.Start();
@@ -44,6 +55,13 @@ namespace ConnectingApps.IntegrationFixture
             return server;
         }
 
+
+        /// <summary>
+        /// Create an instance of something you want to test
+        /// This has to be a Controller 
+        /// </summary>
+        /// <typeparam name="TTestType">A Controller class or some type (typically an interface) that can be resolved from the .NET Core DI Framework</typeparam>
+        /// <returns>An instance of the class you need to test </returns>
         public TTestType Create<TTestType>() where TTestType : class
         {
             return _serviceScope.Value.ServiceProvider.GetService<TTestType>();
