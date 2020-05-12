@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <Version>3.1.0</Version>
+    <Description>An AutoFixture inspired package to create instances for integration testing (not unit testing). Just create an instance of the Fixture class and this library does the work for you to trigger your code in the Startup and Program class. There is a create method to create a test instance and a freeze method to create external dependencies (services) with WireMock.NET .</Description>
+    <PackageLicenseFile>README.md</PackageLicenseFile>
+    <RepositoryUrl>https://github.com/ConnectingApps/DncWireMockDemo</RepositoryUrl>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Copyright>Copyright ©. Connecting Apps. All rights reserved</Copyright>
+    <PackageDescription>An AutoFixture inspired package to create instances for integration testing (not unit testing). Just create an instance of the Fixture class and this library does the work for you to trigger your code in the Startup and Program class. There is a create method to create a test instance and a freeze method to create external dependencies (services) with WireMock.NET </PackageDescription>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="WireMock.Net" Version="1.0.32" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="3.1.3" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.6.1" />
+    <PackageReference Include="xunit" Version="2.4.1" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\README.md">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+</Project>
