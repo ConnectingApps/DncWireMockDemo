@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConnectingApps.IntegrationF
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConnectingApps.IntegrationFixtureTests", "ConnectingApps.IntegrationFixtureTests\ConnectingApps.IntegrationFixtureTests.csproj", "{12B684C1-6A23-40CC-BADE-D3AB04116FCA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConnectingApps.AutoFixtureTests", "ConnectingApps.AutoFixtureTests\ConnectingApps.AutoFixtureTests.csproj", "{4EF454A0-BE61-4B31-9C5C-BC5ADBCB0EDF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{12B684C1-6A23-40CC-BADE-D3AB04116FCA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{12B684C1-6A23-40CC-BADE-D3AB04116FCA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{12B684C1-6A23-40CC-BADE-D3AB04116FCA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4EF454A0-BE61-4B31-9C5C-BC5ADBCB0EDF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4EF454A0-BE61-4B31-9C5C-BC5ADBCB0EDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4EF454A0-BE61-4B31-9C5C-BC5ADBCB0EDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4EF454A0-BE61-4B31-9C5C-BC5ADBCB0EDF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
