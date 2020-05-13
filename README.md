@@ -7,4 +7,53 @@ Here is [our article on codeproject](https://www.codeproject.com/Articles/526735
 
 ## IntegrationFixture
 
-Work in progress.
+IntegrationFixture is a package [available on NuGet](https://www.nuget.org/packages/ConnectingApps.IntegrationFixture/) to do integration testing with Fixture, just like many developers use [AutoFixture](https://github.com/AutoFixture/AutoFixture) for unit tests. The main difference is that you need to setup (and Freeze) and verify external dependencies instead of external dependencies. Setting up an external dependency (typically a web service) is done with [WireMock.NET](https://github.com/WireMock-Net/WireMock.Net/wiki/Stubbing). Here is a coding example:
+
+````csharp
+        [Fact]
+        public async Task GetTest()
+        {
+            // arrange
+            var fixture = new Fixture<Startup>();
+
+            using (var mockServer = fixture.FreezeServer("Google"))
+            {
+                SetupStableServer(mockServer, "Response");
+                var controller = fixture.Create<SearchEngineController>();
+
+                // act
+                var response = await controller.GetNumberOfCharacters("Hoi");
+
+                // assert
+                var request = mockServer.LogEntries.Select(a => a.RequestMessage).Single();
+                Assert.Contains("Hoi", request.RawQuery);
+                Assert.Equal(8, ((OkObjectResult)response.Result).Value);
+            }
+        }
+
+        private void SetupStableServer(FluentMockServer fluentMockServer, string response)
+        {
+            fluentMockServer.Given(Request.Create().UsingGet())
+                .RespondWith(Response.Create().WithBody(response, encoding: Encoding.UTF8)
+                    .WithStatusCode(HttpStatusCode.OK));
+        }
+````
+
+To work with it, you need to setup the `ItemGroup` dependency in your test project correctly, like done here:
+
+````xml
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="3.1.3" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.6.1" />
+    <PackageReference Include="xunit" Version="2.4.1" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="ConnectingApps.IntegrationFixture" Version="3.1.1" />
+  </ItemGroup>
+````
+xUnit is recommended to used a test framework but it is not required. Here is a [full example](https://github.com/ConnectingApps/DncWireMockDemo/tree/master/ConnectingApps.IntegrationFixtureTests.Nuget) of such a test project.
+
+
+
