@@ -13,11 +13,12 @@ namespace ConnectingApps.IntegrationFixture
     /// Before creating, you may need to call the "FreezeServer" method to setup the behaviour of your external server.
     /// </summary>
     /// <typeparam name="TStartup">The Startup class of your program</typeparam>
-    public class Fixture<TStartup> where TStartup : class
+    public class Fixture<TStartup> : IDisposable where TStartup : class
     {
         private readonly Dictionary<string, string> _configurationDictionary = new Dictionary<string, string>();
         private readonly IntegrationWebApplicationFactory<TStartup> _factory = new IntegrationWebApplicationFactory<TStartup>();
         private readonly Lazy<IServiceScope> _serviceScope;
+        private ServiceProvider _serviceProvider;
 
         public Fixture()
         {
@@ -35,7 +36,8 @@ namespace ConnectingApps.IntegrationFixture
                 });
                 whb.ConfigureTestServices(sc =>
                 {
-                    serviceScope = sc.BuildServiceProvider().CreateScope();
+                    _serviceProvider = sc.BuildServiceProvider();
+                    serviceScope = _serviceProvider.CreateScope();
                 });
             }).CreateClient().Dispose();
             return serviceScope;
@@ -65,6 +67,25 @@ namespace ConnectingApps.IntegrationFixture
         public TTestType Create<TTestType>() where TTestType : class
         {
             return _serviceScope.Value.ServiceProvider.GetService<TTestType>();
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                _factory.Dispose();
+                if (_serviceScope.IsValueCreated)
+                {
+                    _serviceProvider.Dispose();
+                    _serviceScope.Value.Dispose();
+                }
+            }
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
         }
     }
 }
