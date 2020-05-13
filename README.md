@@ -10,34 +10,34 @@ Here is [our article on codeproject](https://www.codeproject.com/Articles/526735
 IntegrationFixture is a package [available on NuGet](https://www.nuget.org/packages/ConnectingApps.IntegrationFixture/) to do integration testing with Fixture, just like many developers use [AutoFixture](https://github.com/AutoFixture/AutoFixture) for unit tests. The main difference is that you need to setup (and Freeze) and verify external dependencies instead of external dependencies. Setting up an external dependency (typically a web service) is done with [WireMock.NET](https://github.com/WireMock-Net/WireMock.Net/wiki/Stubbing). Here is a coding example:
 
 ````csharp
-        [Fact]
-        public async Task GetTest()
+[Fact]
+public async Task GetTest()
+{
+    // arrange
+    using (var fixture = new Fixture<Startup>())
+    {
+        using (var mockServer = fixture.FreezeServer("Google"))
         {
-            // arrange
-            using (var fixture = new Fixture<Startup>())
-            {
-                using (var mockServer = fixture.FreezeServer("Google"))
-                {
-                    SetupStableServer(mockServer, "Response");
-                    var controller = fixture.Create<SearchEngineController>();
+            SetupStableServer(mockServer, "Response");
+            var controller = fixture.Create<SearchEngineController>();
 
-                    // act
-                    var response = await controller.GetNumberOfCharacters("Hoi");
+            // act
+            var response = await controller.GetNumberOfCharacters("Hoi");
 
-                    // assert
-                    var request = mockServer.LogEntries.Select(a => a.RequestMessage).Single();
-                    Assert.Contains("Hoi", request.RawQuery);
-                    Assert.Equal(8, ((OkObjectResult)response.Result).Value);
-                }
-            }
+            // assert
+            var request = mockServer.LogEntries.Select(a => a.RequestMessage).Single();
+            Assert.Contains("Hoi", request.RawQuery);
+            Assert.Equal(8, ((OkObjectResult)response.Result).Value);
         }
+    }
+}
 
-        private void SetupStableServer(FluentMockServer fluentMockServer, string response)
-        {
-            fluentMockServer.Given(Request.Create().UsingGet())
-                .RespondWith(Response.Create().WithBody(response, encoding: Encoding.UTF8)
-                    .WithStatusCode(HttpStatusCode.OK));
-        }
+private void SetupStableServer(FluentMockServer fluentMockServer, string response)
+{
+    fluentMockServer.Given(Request.Create().UsingGet())
+        .RespondWith(Response.Create().WithBody(response, encoding: Encoding.UTF8)
+            .WithStatusCode(HttpStatusCode.OK));
+}
 ````
 
 To work with it, you need to setup the `ItemGroup` dependency in your test project correctly, like done here:
