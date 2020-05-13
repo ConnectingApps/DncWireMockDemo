@@ -19,14 +19,18 @@ namespace ConnectingApps.IntegrationFixtureTests.Nuget
         [Fact]
         public async Task GetTest()
         {
+            // arrange
             var fixture = new Fixture<Startup>();
 
             using (var mockServer = fixture.FreezeServer("Google"))
             {
                 SetupStableServer(mockServer, "Response");
                 var controller = fixture.Create<SearchEngineController>();
+
+                // act
                 var response = await controller.GetNumberOfCharacters("Hoi");
 
+                // assert
                 var request = mockServer.LogEntries.Select(a => a.RequestMessage).Single();
                 Assert.Contains("Hoi", request.RawQuery);
                 Assert.Equal(8, ((OkObjectResult)response.Result).Value);
