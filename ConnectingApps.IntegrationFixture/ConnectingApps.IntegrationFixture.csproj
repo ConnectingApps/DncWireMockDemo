@@ -27,4 +27,6 @@
     </None>
   </ItemGroup>
 
+  <Import Project="..\ConnectingApps.IntegrationFixture.Shared\ConnectingApps.IntegrationFixture.Shared.projitems" Label="Shared" />
+
 </Project>

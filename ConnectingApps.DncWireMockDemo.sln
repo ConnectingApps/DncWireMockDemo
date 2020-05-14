@@ -23,7 +23,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConnectingApps.IntegrationF
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConnectingApps.IntegrationFixtureTests21", "ConnectingApps.IntegrationFixtureTests21\ConnectingApps.IntegrationFixtureTests21.csproj", "{419B760F-1B33-456B-8CAA-2D664C0DE324}"
 EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "ConnectingApps.IntegrationFixture.Shared", "ConnectingApps.IntegrationFixture.Shared\ConnectingApps.IntegrationFixture.Shared.shproj", "{6AC057C2-A640-4E3A-B3C4-82C0D6C60D2F}"
+EndProject
 Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		ConnectingApps.IntegrationFixture.Shared\ConnectingApps.IntegrationFixture.Shared.projitems*{673b90db-aa58-49c6-bfb2-69d94506b137}*SharedItemsImports = 5
+		ConnectingApps.IntegrationFixture.Shared\ConnectingApps.IntegrationFixture.Shared.projitems*{6ac057c2-a640-4e3a-b3c4-82c0d6c60d2f}*SharedItemsImports = 13
+		ConnectingApps.IntegrationFixture.Shared\ConnectingApps.IntegrationFixture.Shared.projitems*{c0b9c109-93ae-4dbe-a0d7-c16f445638a2}*SharedItemsImports = 5
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU

@@ -12,4 +12,6 @@
     <PackageReference Include="WireMock.Net" Version="1.0.32" />
   </ItemGroup>
 
+  <Import Project="..\..\ConnectingApps.IntegrationFixture.Shared\ConnectingApps.IntegrationFixture.Shared.projitems" Label="Shared" />
+
 </Project>
