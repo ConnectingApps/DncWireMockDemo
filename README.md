@@ -7,7 +7,7 @@ Here is [our article on codeproject](https://www.codeproject.com/Articles/526735
 
 ## IntegrationFixture
 
-IntegrationFixture is a package [available on NuGet](https://www.nuget.org/packages/ConnectingApps.IntegrationFixture/) to do integration testing with Fixture, just like many developers use [AutoFixture](https://github.com/AutoFixture/AutoFixture) for unit tests. Read more about this in [our article on CodeProject](https://www.codeproject.com/Articles/5267948/Integration-Testing-More-Fixtures-than-AutoFixture). The main difference is that you need to setup (and Freeze) and verify external dependencies instead of external dependencies. Setting up an external dependency (typically a web service) is done with [WireMock.NET](https://github.com/WireMock-Net/WireMock.Net/wiki/Stubbing). Here is a coding example:
+IntegrationFixture is a package [available on NuGet](https://www.nuget.org/packages/ConnectingApps.IntegrationFixture/) to do integration testing with Fixture, just like many developers use [AutoFixture](https://github.com/AutoFixture/AutoFixture) for unit tests. Read more about this in [our article on CodeProject](https://www.codeproject.com/Articles/5267948/Integration-Testing-More-Fixtures-than-AutoFixture). The main difference is that you need to setup (and Freeze) and verify external dependencies instead of external dependencies. Setting up an external dependency (typically a web service) is done with [WireMock.NET](https://github.com/WireMock-Net/WireMock.Net/wiki/Stubbing). Here is a coding example with .NET Core 3.1 (this is the recommended version, we have .NET Core 2.1 support too with an example [here](https://github.com/ConnectingApps/DncWireMockDemo/tree/master/21/ConnectingApps.IntegrationFixtureTests21.NuGet)):
 
 ````csharp
 [Fact]
@@ -51,7 +51,7 @@ To work with it, you need to setup the `ItemGroup` dependency in your test proje
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="ConnectingApps.IntegrationFixture" Version="3.1.1" />
+    <PackageReference Include="ConnectingApps.IntegrationFixture" Version="3.1.2" />
   </ItemGroup>
 ````
 xUnit is recommended to used a test framework but it is not required. Here is a [full example](https://github.com/ConnectingApps/DncWireMockDemo/tree/master/ConnectingApps.IntegrationFixtureTests.Nuget) of such a test project.

@@ -13,7 +13,7 @@ namespace ConnectingApps.IntegrationFixture
     /// Before creating, you may need to call the "FreezeServer" method to setup the behaviour of your external server.
     /// </summary>
     /// <typeparam name="TStartup">The Startup class of your program</typeparam>
-    public class Fixture<TStartup> : IDisposable where TStartup : class
+    public partial class Fixture<TStartup> : IDisposable where TStartup : class
     {
         private readonly Dictionary<string, string> _configurationDictionary = new Dictionary<string, string>();
         private readonly IntegrationWebApplicationFactory<TStartup> _factory = new IntegrationWebApplicationFactory<TStartup>();

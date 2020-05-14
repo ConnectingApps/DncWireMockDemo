@@ -1,9 +1,9 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <IsPackable>true</IsPackable>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
-    <Version>3.1.2</Version>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <Version>2.1.2</Version>
     <OutputType>Dll</OutputType>
     <Description>An AutoFixture inspired package to create instances for integration testing (not unit testing). Just create an instance of the Fixture class and this library does the work for you to trigger your code in the Startup and Program class. There is a create method to create a test instance and a freeze method to create external dependencies (services) with WireMock.NET .</Description>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
@@ -12,23 +12,28 @@
     <Copyright>Copyright ©. Connecting Apps. All rights reserved</Copyright>
     <PackageDescription>An AutoFixture inspired package to create instances for integration testing (not unit testing). Just create an instance of the Fixture class and this library does the work for you to trigger your code in the Startup and Program class. There is a create method to create a test instance and a freeze method to create external dependencies (services) with WireMock.NET </PackageDescription>
     <PackageProjectUrl>https://github.com/ConnectingApps/DncWireMockDemo#integrationfixture</PackageProjectUrl>
+    <PackageId>ConnectingApps.IntegrationFixture</PackageId>
     <Authors>Daan Acohen</Authors>
     <Company>Connecting Apps</Company>
+    <Product>ConnectingApps.IntegrationFixture</Product>
+
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="WireMock.Net" Version="1.0.32" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="3.1.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="2.1.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Runtime" Version="2.1.1" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.6.1" />
+    <PackageReference Include="WireMock.Net" Version="1.0.32" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="..\LICENSE">
+    <None Include="..\..\LICENSE">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
   </ItemGroup>
 
-  <Import Project="..\ConnectingApps.IntegrationFixture.Shared\ConnectingApps.IntegrationFixture.Shared.projitems" Label="Shared" />
+  <Import Project="..\..\ConnectingApps.IntegrationFixture.Shared\ConnectingApps.IntegrationFixture.Shared.projitems" Label="Shared" />
 
 </Project>

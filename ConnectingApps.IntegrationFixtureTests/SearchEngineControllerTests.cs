@@ -19,7 +19,7 @@ namespace ConnectingApps.IntegrationFixtureTests
         [Fact]
         public async Task GetTest()
         {
-            using (var fixture = new Fixture<Startup>())
+            await using (var fixture = new Fixture<Startup>())
             {
                 using (var mockServer = fixture.FreezeServer("Google"))
                 {
