@@ -21,6 +21,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dnc21Demo", "21\Dnc21Demo\D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConnectingApps.IntegrationFixture21", "21\ConnectingApps.IntegrationFixture21\ConnectingApps.IntegrationFixture21.csproj", "{673B90DB-AA58-49C6-BFB2-69D94506B137}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConnectingApps.IntegrationFixtureTests21", "ConnectingApps.IntegrationFixtureTests21\ConnectingApps.IntegrationFixtureTests21.csproj", "{419B760F-1B33-456B-8CAA-2D664C0DE324}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -59,6 +61,10 @@ Global
 		{673B90DB-AA58-49C6-BFB2-69D94506B137}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{673B90DB-AA58-49C6-BFB2-69D94506B137}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{673B90DB-AA58-49C6-BFB2-69D94506B137}.Release|Any CPU.Build.0 = Release|Any CPU
+		{419B760F-1B33-456B-8CAA-2D664C0DE324}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{419B760F-1B33-456B-8CAA-2D664C0DE324}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{419B760F-1B33-456B-8CAA-2D664C0DE324}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{419B760F-1B33-456B-8CAA-2D664C0DE324}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -66,6 +72,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{42AEA555-0668-4163-9BEC-640537C88880} = {923A3684-F29C-4F20-9301-2A297DDB2214}
 		{673B90DB-AA58-49C6-BFB2-69D94506B137} = {923A3684-F29C-4F20-9301-2A297DDB2214}
+		{419B760F-1B33-456B-8CAA-2D664C0DE324} = {923A3684-F29C-4F20-9301-2A297DDB2214}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {37BB08C1-74A5-42EE-BF4C-86BDE7162392}
