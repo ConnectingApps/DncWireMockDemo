@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using ConnectingApps.IntegrationFixture.Shared.Customizers;
 using Microsoft.AspNetCore.TestHost;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using WireMock.Server;
 
@@ -15,10 +15,10 @@ namespace ConnectingApps.IntegrationFixture
     /// <typeparam name="TStartup">The Startup class of your program</typeparam>
     public partial class Fixture<TStartup> : IDisposable where TStartup : class
     {
-        private readonly Dictionary<string, string> _configurationDictionary = new Dictionary<string, string>();
         private readonly IntegrationWebApplicationFactory<TStartup> _factory = new IntegrationWebApplicationFactory<TStartup>();
         private readonly Lazy<IServiceScope> _serviceScope;
         private ServiceProvider _serviceProvider;
+        private readonly List<IConfigbuilderCustomizer> _configbuilderCustomizers = new List<IConfigbuilderCustomizer>();
 
         public Fixture()
         {
@@ -32,7 +32,10 @@ namespace ConnectingApps.IntegrationFixture
             {
                 whb.ConfigureAppConfiguration((context, configBuilder) =>
                 {
-                    configBuilder.AddInMemoryCollection(_configurationDictionary);
+                    foreach (var configbuilderCustomizer in _configbuilderCustomizers)
+                    {
+                        configbuilderCustomizer.Customize(configBuilder);
+                    }
                 });
                 whb.ConfigureTestServices(sc =>
                 {
@@ -53,10 +56,17 @@ namespace ConnectingApps.IntegrationFixture
         {
             var server = FluentMockServer.Start();
             var url = server.Urls.Single();
-            _configurationDictionary.Add(configurationParameter, url);
+            Customize(new DictionaryCustomizer(new Dictionary<string, string>()
+            {
+                {configurationParameter,url}
+            }));
             return server;
         }
 
+        public void Customize(IConfigbuilderCustomizer configbuilderCustomizer)
+        {
+            _configbuilderCustomizers.Add(configbuilderCustomizer);
+        }
 
         /// <summary>
         /// Create an instance of something you want to test

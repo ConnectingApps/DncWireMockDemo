@@ -6,6 +6,7 @@ using ConnectingApps.DncWireMockDemo;
 using ConnectingApps.DncWireMockDemo.Controllers;
 using ConnectingApps.IntegrationFixture;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using WireMock.RequestBuilders;
 using WireMock.ResponseBuilders;
 using WireMock.Server;

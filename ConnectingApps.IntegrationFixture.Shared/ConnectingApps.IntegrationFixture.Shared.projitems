@@ -9,6 +9,8 @@
     <Import_RootNamespace>ConnectingApps.IntegrationFixture.Shared</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Customizers\DictionaryCustomizer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Customizers\IConfigbuilderCustomizer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Fixture.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)IntegrationWebApplicationFactory.cs" />
   </ItemGroup>
