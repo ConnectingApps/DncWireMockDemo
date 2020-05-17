@@ -15,8 +15,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\21\ConnectingApps.IntegrationFixture21\ConnectingApps.IntegrationFixture21.csproj" />
-    <ProjectReference Include="..\21\Dnc21Demo\Dnc21Demo.csproj" />
+    <ProjectReference Include="..\ConnectingApps.IntegrationFixture21\ConnectingApps.IntegrationFixture21.csproj" />
+    <ProjectReference Include="..\Dnc21Demo\Dnc21Demo.csproj" />
   </ItemGroup>
 
 </Project>
