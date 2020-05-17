@@ -20,4 +20,10 @@
     <ProjectReference Include="..\ConnectingApps.IntegrationFixture\ConnectingApps.IntegrationFixture.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="data.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

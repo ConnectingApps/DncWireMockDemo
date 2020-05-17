@@ -25,6 +25,7 @@ namespace ConnectingApps.DncWireMockDemo
         {
             services.AddControllers();
             var googleLocation = Configuration["Google"];
+            var jsonDummy = Configuration["JsonDummy"];
             services.AddHttpClient<ISearchEngineService, SearchEngineService>(c =>
                     c.BaseAddress = new Uri(googleLocation))
                 .SetHandlerLifetime(TimeSpan.FromMinutes(5))
