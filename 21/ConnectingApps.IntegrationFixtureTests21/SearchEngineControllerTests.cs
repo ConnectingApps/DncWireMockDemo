@@ -1,11 +1,14 @@
-﻿using System.Linq;
+﻿using System.IO;
+using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using ConnectingApps.IntegrationFixture;
+using ConnectingApps.IntegrationFixture.Shared.Customizers;
 using Dnc21Demo;
 using Dnc21Demo.Controllers;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using WireMock.RequestBuilders;
 using WireMock.ResponseBuilders;
 using WireMock.Server;
@@ -30,6 +33,32 @@ namespace ConnectingApps.IntegrationFixtureTests
                     var request = mockServer.LogEntries.Select(a => a.RequestMessage).Single();
                     Assert.Contains("Hoi", request.RawQuery);
                     Assert.Equal(8, ((OkObjectResult)response.Result).Value);
+                }
+            }
+        }
+
+        [Fact]
+        public async Task GetTestWithJson()
+        { 
+            using (var fixture = new Fixture<Startup>())
+            {
+                using (var mockServer = fixture.FreezeServer("Google"))
+                {
+                    string assemblyDirectoryName = Path.GetDirectoryName(typeof(SearchEngineController).Assembly.Location);
+                    // ReSharper disable once AssignNullToNotNullAttribute
+                    var jsonPath = Path.Combine(assemblyDirectoryName, "data.json");
+                    fixture.Customize(new JsonCustomizer(jsonPath));
+
+                    SetupStableServer(mockServer, "Response");
+                    var controller = fixture.Create<SearchEngineController>();
+
+                    var response = await controller.GetNumberOfCharacters("Hoi");
+
+                    var request = mockServer.LogEntries.Select(a => a.RequestMessage).Single();
+                    Assert.Contains("Hoi", request.RawQuery);
+                    Assert.Equal(8, ((OkObjectResult)response.Result).Value);
+                    var configuration = fixture.Create<IConfiguration>();
+                    Assert.Equal("JsonDummyValue", configuration["JsonDummy"]);
                 }
             }
         }
