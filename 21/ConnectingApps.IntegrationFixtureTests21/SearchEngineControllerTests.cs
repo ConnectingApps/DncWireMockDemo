@@ -9,6 +9,7 @@ using Dnc21Demo;
 using Dnc21Demo.Controllers;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using Refit;
 using WireMock.RequestBuilders;
 using WireMock.ResponseBuilders;
 using WireMock.Server;
@@ -59,6 +60,23 @@ namespace ConnectingApps.IntegrationFixtureTests
                     Assert.Equal(8, ((OkObjectResult)response.Result).Value);
                     var configuration = fixture.Create<IConfiguration>();
                     Assert.Equal("JsonDummyValue", configuration["JsonDummy"]);
+                }
+            }
+        }
+
+        [Fact]
+        public async Task GetViaRefitClient()
+        {
+            using (var fixture = new RefitFixture<Startup, ISearchEngine>(RestService.For<ISearchEngine>))
+            {
+                using (var mockServer = fixture.FreezeServer("Google"))
+                {
+                    SetupStableServer(mockServer, "Response");
+                    var refitClient = fixture.GetRefitClient();
+                    var response = await refitClient.GetNumberOfCharacters("Hoi");
+                    await response.EnsureSuccessStatusCodeAsync();
+                    var request = mockServer.LogEntries.Select(a => a.RequestMessage).Single();
+                    Assert.Contains("Hoi", request.RawQuery);
                 }
             }
         }
