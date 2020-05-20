@@ -6,7 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace ConnectingApps.IntegrationFixture
 {
-    internal class IntegrationWebApplicationFactory<TStartup> : WebApplicationFactory<TStartup> where TStartup : class
+    public class IntegrationWebApplicationFactory<TStartup> : WebApplicationFactory<TStartup> where TStartup : class
     {
         protected override void ConfigureWebHost(IWebHostBuilder builder)
         {

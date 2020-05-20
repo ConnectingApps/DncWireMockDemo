@@ -9,6 +9,7 @@ using ConnectingApps.IntegrationFixture;
 using ConnectingApps.IntegrationFixture.Shared.Customizers;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using Refit;
 using WireMock.RequestBuilders;
 using WireMock.ResponseBuilders;
 using WireMock.Server;
@@ -80,6 +81,22 @@ namespace ConnectingApps.IntegrationFixtureTests
             }
         }
 
+        [Fact]
+        public async Task GetViaRefitClient()
+        {
+            using (var fixture = new RefitFixture<Startup, ISearchEngine>(RestService.For<ISearchEngine>))
+            {
+                using (var mockServer = fixture.FreezeServer("Google"))
+                {
+                    SetupStableServer(mockServer, "Response");
+                    var refitClient = fixture.GetRefitClient();
+                    var response = await refitClient.GetNumberOfCharacters("Hoi");
+                    await response.EnsureSuccessStatusCodeAsync();
+                    var request = mockServer.LogEntries.Select(a => a.RequestMessage).Single();
+                    Assert.Contains("Hoi", request.RawQuery);
+                }
+            }
+        }
 
         private void SetupStableServer(FluentMockServer fluentMockServer, string response)
         {
