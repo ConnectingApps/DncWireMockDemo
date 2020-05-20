@@ -14,5 +14,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Customizers\JsonConfigBuilderCustomizer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Fixture.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)IntegrationWebApplicationFactory.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)RefitFixture.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)FixtureBase.cs" />
   </ItemGroup>
 </Project>

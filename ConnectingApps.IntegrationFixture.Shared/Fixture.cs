@@ -13,12 +13,10 @@ namespace ConnectingApps.IntegrationFixture
     /// Before creating, you may need to call the "FreezeServer" method to setup the behaviour of your external server.
     /// </summary>
     /// <typeparam name="TStartup">The Startup class of your program</typeparam>
-    public partial class Fixture<TStartup> : IDisposable where TStartup : class
+    public partial class Fixture<TStartup> : FixtureBase<TStartup> where TStartup : class
     {
-        private readonly IntegrationWebApplicationFactory<TStartup> _factory = new IntegrationWebApplicationFactory<TStartup>();
         private readonly Lazy<IServiceScope> _serviceScope;
         private ServiceProvider _serviceProvider;
-        private readonly List<IConfigbuilderCustomizer> _configbuilderCustomizers = new List<IConfigbuilderCustomizer>();
 
         public Fixture()
         {
@@ -46,28 +44,6 @@ namespace ConnectingApps.IntegrationFixture
             return serviceScope;
         }
 
-
-        /// <summary>
-        /// Create a running WireMock Server and ensure your code will use it by changing the configuration parameter. You can now setup the behaviour of it: https://github.com/WireMock-Net/WireMock.Net/wiki/Stubbing#stubbing
-        /// </summary>
-        /// <param name="configurationParameter">This is typically something like "ExternalService:Url"</param>
-        /// <returns>The running and self-hosted WireMock server</returns>
-        public FluentMockServer FreezeServer(string configurationParameter)
-        {
-            var server = FluentMockServer.Start();
-            var url = server.Urls.Single();
-            Customize(new DictionaryCustomizer(new Dictionary<string, string>()
-            {
-                {configurationParameter,url}
-            }));
-            return server;
-        }
-
-        public void Customize(IConfigbuilderCustomizer configbuilderCustomizer)
-        {
-            _configbuilderCustomizers.Add(configbuilderCustomizer);
-        }
-
         /// <summary>
         /// Create an instance of something you want to test
         /// This has to be a Controller 
@@ -79,23 +55,17 @@ namespace ConnectingApps.IntegrationFixture
             return _serviceScope.Value.ServiceProvider.GetService<TTestType>();
         }
 
-        protected virtual void Dispose(bool disposing)
+        protected override void Dispose(bool disposing)
         {
+            base.Dispose(disposing);
             if (disposing)
             {
-                _factory.Dispose();
                 if (_serviceScope.IsValueCreated)
                 {
                     _serviceProvider.Dispose();
                     _serviceScope.Value.Dispose();
                 }
             }
-        }
-
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
         }
     }
 }

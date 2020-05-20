@@ -51,10 +51,30 @@ To work with it, you need to setup the `ItemGroup` dependency in your test proje
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="ConnectingApps.IntegrationFixture" Version="3.1.3" />
+    <PackageReference Include="ConnectingApps.IntegrationFixture" Version="3.1.4" />
   </ItemGroup>
 ````
+
+For .NET Core 2.1, it is typically:
+
+````xml
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="2.1.3" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.6.1" />
+    <PackageReference Include="xunit" Version="2.4.1" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="ConnectingApps.IntegrationFixture" Version="2.1.4" />
+  </ItemGroup>
+````
+
+
+
 xUnit is recommended to used a test framework but it is not required. Here is a [full example](https://github.com/ConnectingApps/DncWireMockDemo/tree/master/ConnectingApps.IntegrationFixtureTests.Nuget) of such a test project.
+
+There is also an [example](https://github.com/ConnectingApps/DncWireMockDemo/tree/master/21/ConnectingApps.IntegrationFixtureTests21.NuGet) for .NET Core 2.1 .
 
 ### Customization
 
@@ -62,9 +82,26 @@ Like with AutoFixture, it is possible to Customize your fixture and create your 
 
 Here is an example of Customization:
 
-New Configuration parameters (from a json file) are added.
+New Configuration parameters (from a json file) are added in 2.1.3 and 3.1.3.
 ````csharp
 fixture.Customize(new JsonCustomizer(jsonPath));
 ````
 
+### Refit support
+Call your controller from a refit client and test both your client package and controller package at once, added in 2.1.4 and 3.1.4 .
+
+````csharp
+using (var fixture = new RefitFixture<Startup, ISearchEngine>(RestService.For<ISearchEngine>))
+{
+    using (var mockServer = fixture.FreezeServer("Google"))
+    {
+        SetupStableServer(mockServer, "Response");
+        var refitClient = fixture.GetRefitClient();
+        var response = await refitClient.GetNumberOfCharacters("Hoi");
+        await response.EnsureSuccessStatusCodeAsync();
+        var request = mockServer.LogEntries.Select(a => a.RequestMessage).Single();
+        Assert.Contains("Hoi", request.RawQuery);
+    }
+}
+````
 
