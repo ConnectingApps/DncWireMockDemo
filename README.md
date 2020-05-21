@@ -80,15 +80,14 @@ There is also an [example](https://github.com/ConnectingApps/DncWireMockDemo/tre
 
 Like with AutoFixture, it is possible to Customize your fixture and create your own Customization.
 
-Here is an example of Customization:
-
-New Configuration parameters (from a json file) are added in 2.1.3 and 3.1.3.
+Here is an example of Customization (added in 2.1.3 and 3.1.3).
+New Configuration parameters (from a json file) are added like this:
 ````csharp
 fixture.Customize(new JsonCustomizer(jsonPath));
 ````
 
 ### Refit support
-Call your controller from a refit client and test both your client package and controller package at once, added in 2.1.4 and 3.1.4 .
+Call your controller from a refit client] and test both your client package and controller package at once, added in 2.1.4 and 3.1.4 . We wrote [an article about this on CodeProject](https://www.codeproject.com/Tips/5268823/Testing-Validation-Attributes-with-xUnit).
 
 ````csharp
 using (var fixture = new RefitFixture<Startup, ISearchEngine>(RestService.For<ISearchEngine>))
