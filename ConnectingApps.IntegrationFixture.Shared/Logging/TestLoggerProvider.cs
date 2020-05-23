@@ -4,7 +4,7 @@ using Microsoft.Extensions.Logging;
 
 namespace ConnectingApps.IntegrationFixture.Shared.Logging
 {
-    public class TestLoggerProvider : ILoggerProvider
+    internal class TestLoggerProvider : ILoggerProvider
     {
         private readonly ILogSource _logSource;
         private readonly ConcurrentDictionary<string, TestLogger> _loggers = new ConcurrentDictionary<string, TestLogger>();

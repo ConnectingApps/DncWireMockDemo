@@ -3,7 +3,7 @@ using Microsoft.Extensions.Logging;
 
 namespace ConnectingApps.IntegrationFixture.Logging
 {
-    public class TestLogger : ILogger
+    internal class TestLogger : ILogger
     {
         private readonly ILogSource _logSource;
 

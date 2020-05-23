@@ -8,7 +8,7 @@ using Microsoft.Extensions.Logging;
 
 namespace ConnectingApps.IntegrationFixture.Shared.Logging
 {
-    public class LogSource : ILogSource
+    internal class LogSource : ILogSource
     {
         public ConcurrentBag<LogEntry> LogEntries { get; } = new ConcurrentBag<LogEntry>();
 
