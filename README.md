@@ -70,7 +70,7 @@ For .NET Core 2.1, it is typically:
   </ItemGroup>
 ````
 
-
+For [Refit support](https://github.com/ConnectingApps/DncWireMockDemo#refit-support), you just need to a install a recent version of Refit. The specific version does not really matter.
 
 xUnit is recommended to used a test framework but it is not required. Here is a [full example](https://github.com/ConnectingApps/DncWireMockDemo/tree/master/ConnectingApps.IntegrationFixtureTests.Nuget) of such a test project.
 
