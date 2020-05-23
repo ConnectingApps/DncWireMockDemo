@@ -1,8 +1,11 @@
-﻿using System.Net;
+﻿using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using ConnectingApps.DncWireMockDemo;
+using ConnectingApps.DncWireMockDemo.Controllers;
 using ConnectingApps.DncWireMockDemo.Models;
 using ConnectingApps.IntegrationFixture;
+using Microsoft.AspNetCore.Mvc;
 using Refit;
 using Xunit;
 
@@ -44,6 +47,42 @@ namespace ConnectingApps.IntegrationFixtureTests
                 Assert.Contains("Alexander", response.Content);
                 Assert.Contains("Johnson", response.Content);
             }
+        }
+
+        [Fact]
+        public async Task NoMiddleNamePutRequestTest()
+        {
+            using (var fixture = new RefitFixture<Startup, ILogicClient>(RestService.For<ILogicClient>))
+            {
+                var refitClient = fixture.GetRefitClient();
+                var response = await refitClient.Put(new Name
+                {
+                    FirstName = "Alexander",
+                    LastName = "Johnson",
+                });
+                await response.EnsureSuccessStatusCodeAsync();
+                Assert.Contains("Alexander", response.Content);
+                Assert.Contains("Johnson", response.Content);
+            }
+        }
+
+        [Fact]
+        public async Task NoMiddleNamePutTest()
+        {
+            using (var fixture = new Fixture<Startup>())
+            {
+                var controller = fixture.Create<LogicController>();
+                var response = controller.Put(new Name()
+                {
+                    FirstName = "F",
+                    LastName = "L"
+                });
+                Assert.Equal(200, ((ObjectResult)response.Result).StatusCode);
+                Assert.Single(fixture.LogSource.GetWarnings());
+                var dataLogged = fixture.LogSource.GetLoggedObjects<Name>().ToList();
+                Assert.Single(dataLogged);
+                Assert.Equal("F", dataLogged.Single().Value.FirstName);
+            } 
         }
 
         [Theory]

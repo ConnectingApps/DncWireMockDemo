@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using ConnectingApps.IntegrationFixture.Logging;
 using ConnectingApps.IntegrationFixture.Shared.Customizers;
+using ConnectingApps.IntegrationFixture.Shared.Logging;
 using Microsoft.AspNetCore.TestHost;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using WireMock.Server;
 
 namespace ConnectingApps.IntegrationFixture
@@ -17,6 +20,8 @@ namespace ConnectingApps.IntegrationFixture
     {
         private readonly Lazy<IServiceScope> _serviceScope;
         private ServiceProvider _serviceProvider;
+
+        public ILogSource LogSource { get; } = new LogSource();
 
         public Fixture()
         {
@@ -41,6 +46,9 @@ namespace ConnectingApps.IntegrationFixture
                     serviceScope = _serviceProvider.CreateScope();
                 });
             }).CreateClient().Dispose();
+
+            var loggerFactory = serviceScope.ServiceProvider.GetService<ILoggerFactory>();
+            loggerFactory.AddProvider(new TestLoggerProvider(LogSource));
             return serviceScope;
         }
 
