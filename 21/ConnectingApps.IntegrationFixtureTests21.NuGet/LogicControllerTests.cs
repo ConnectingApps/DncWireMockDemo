@@ -2,10 +2,10 @@
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
-using ConnectingApps.DncWireMockDemo;
-using ConnectingApps.DncWireMockDemo.Controllers;
 using ConnectingApps.DncWireMockDemo.Models;
 using ConnectingApps.IntegrationFixture;
+using Dnc21Demo;
+using Dnc21Demo.Controllers;
 using Microsoft.AspNetCore.Mvc;
 using Refit;
 using Xunit;

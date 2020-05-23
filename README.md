@@ -51,7 +51,7 @@ To work with it, you need to setup the `ItemGroup` dependency in your test proje
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="ConnectingApps.IntegrationFixture" Version="3.1.4" />
+    <PackageReference Include="ConnectingApps.IntegrationFixture" Version="3.1.5" />
   </ItemGroup>
 ````
 
@@ -66,7 +66,7 @@ For .NET Core 2.1, it is typically:
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="ConnectingApps.IntegrationFixture" Version="2.1.4" />
+    <PackageReference Include="ConnectingApps.IntegrationFixture" Version="2.1.5" />
   </ItemGroup>
 ````
 
@@ -104,3 +104,23 @@ using (var fixture = new RefitFixture<Startup, ISearchEngine>(RestService.For<IS
 }
 ````
 
+### Assert on the logged data, a new feature added in 3.1.5 and 2.1.5 . You can assert on the logged data and the test lines that are logged
+````csharp
+using (var fixture = new Fixture<Startup>())
+{
+    var controller = fixture.Create<LogicController>();
+    var response = controller.Put(new Name()
+    {
+        FirstName = "F",
+        LastName = "L"
+    });
+    Assert.Equal(200, ((ObjectResult)response.Result).StatusCode);
+    Assert.Single(fixture.LogSource.GetWarnings());
+    var dataLogged = fixture.LogSource.GetLoggedObjects<Name>().ToList();
+    Assert.Single(dataLogged);
+    Assert.Equal("F", dataLogged.Single().Value.FirstName);
+    Assert.Contains(fixture.LogSource.GetLogLines(), a => a == "Warning Logged");
+    Assert.Contains(fixture.LogSource.GetLogLines(), a => a.Contains("This is the input"));
+    Assert.Single(fixture.LogSource.GetExceptions().OfType<InvalidDataException>());
+} 
+````

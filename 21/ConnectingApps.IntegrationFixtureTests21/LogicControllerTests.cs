@@ -1,11 +1,10 @@
-﻿using System.IO;
-using System.Linq;
+﻿using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
-using ConnectingApps.DncWireMockDemo;
-using ConnectingApps.DncWireMockDemo.Controllers;
 using ConnectingApps.DncWireMockDemo.Models;
 using ConnectingApps.IntegrationFixture;
+using Dnc21Demo;
+using Dnc21Demo.Controllers;
 using Microsoft.AspNetCore.Mvc;
 using Refit;
 using Xunit;
@@ -83,9 +82,6 @@ namespace ConnectingApps.IntegrationFixtureTests
                 var dataLogged = fixture.LogSource.GetLoggedObjects<Name>().ToList();
                 Assert.Single(dataLogged);
                 Assert.Equal("F", dataLogged.Single().Value.FirstName);
-                Assert.Contains(fixture.LogSource.GetLogLines(), a => a == "Warning Logged");
-                Assert.Contains(fixture.LogSource.GetLogLines(), a => a.Contains("This is the input"));
-                Assert.Single(fixture.LogSource.GetExceptions().OfType<InvalidDataException>());
             } 
         }
 
