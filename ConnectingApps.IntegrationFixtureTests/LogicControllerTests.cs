@@ -82,6 +82,8 @@ namespace ConnectingApps.IntegrationFixtureTests
                 var dataLogged = fixture.LogSource.GetLoggedObjects<Name>().ToList();
                 Assert.Single(dataLogged);
                 Assert.Equal("F", dataLogged.Single().Value.FirstName);
+                Assert.Contains(fixture.LogSource.GetLogLines(), a => a == "Warning Logged");
+                Assert.Contains(fixture.LogSource.GetLogLines(), a => a.Contains("This is the input"));
             } 
         }
 

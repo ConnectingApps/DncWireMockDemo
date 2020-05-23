@@ -15,5 +15,6 @@ namespace ConnectingApps.IntegrationFixture.Logging
         IEnumerable<LogEntry> GetTraces();
         IReadOnlyList<KeyValuePair<string, object>> GetLoggedObjects();
         IEnumerable<KeyValuePair<string, T>> GetLoggedObjects<T>() where T : class;
+        IEnumerable<string> GetLogLines();
     }
 }

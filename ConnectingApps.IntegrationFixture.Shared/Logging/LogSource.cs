@@ -28,6 +28,8 @@ namespace ConnectingApps.IntegrationFixture.Shared.Logging
 
         public IReadOnlyList<KeyValuePair<string, object>> GetLoggedObjects() => LogEntries.SelectMany(a => a.LoggedObjects).ToList();
 
+        public IEnumerable<string> GetLogLines() => LogEntries.Select(l => l.LogLine);
+
         public IEnumerable<KeyValuePair<string, T>> GetLoggedObjects<T>() where T : class
         {
             return GetLoggedObjects()

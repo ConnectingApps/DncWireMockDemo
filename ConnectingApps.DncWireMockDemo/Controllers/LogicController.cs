@@ -26,7 +26,7 @@ namespace ConnectingApps.DncWireMockDemo.Controllers
         {
             _logger.LogWarning("Warning Logged");
 
-            _logger.LogInformation("This is the input input {name}", value);
+            _logger.LogInformation("This is the input {name}", value);
 
             return Ok($"{value.FirstName} {value.MiddleName} {value.LastName}");
         }

@@ -24,7 +24,7 @@ namespace ConnectingApps.IntegrationFixture.Logging
 
         public void Log<TState>(LogLevel logLevel, EventId eventId, TState state, Exception exception, Func<TState, Exception, string> formatter)
         {
-            var logEntry = new LogEntry(logLevel,eventId, state, exception , formatter);
+            var logEntry = new LogEntry(logLevel,eventId, state, exception , new Lazy<string>(() => formatter(state,exception)));
             _logSource.LogEntries.Add(logEntry);
         }
     }
