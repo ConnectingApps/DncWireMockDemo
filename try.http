@@ -1,0 +1,10 @@
+### Just GET
+http://localhost:61712/api/searchengine/daan
+
+### Just POST
+POST http://localhost:61712/api/logic
+Content-Type: application/json
+
+{
+    "FirstName": "Daan"
+}
