@@ -104,7 +104,8 @@ using (var fixture = new RefitFixture<Startup, ISearchEngine>(RestService.For<IS
 }
 ````
 
-### Assert on the logged data, a new feature added in 3.1.5 and 2.1.5 . You can assert on the logged data and the test lines that are logged
+### Assert on the logged data
+A new feature added in 3.1.5 and 2.1.5 . You can assert on the logged data and the test lines that are logged
 ````csharp
 using (var fixture = new Fixture<Startup>())
 {
