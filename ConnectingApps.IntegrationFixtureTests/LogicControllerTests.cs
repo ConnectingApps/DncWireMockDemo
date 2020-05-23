@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.IO;
+using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using ConnectingApps.DncWireMockDemo;
@@ -84,6 +85,7 @@ namespace ConnectingApps.IntegrationFixtureTests
                 Assert.Equal("F", dataLogged.Single().Value.FirstName);
                 Assert.Contains(fixture.LogSource.GetLogLines(), a => a == "Warning Logged");
                 Assert.Contains(fixture.LogSource.GetLogLines(), a => a.Contains("This is the input"));
+                Assert.Single(fixture.LogSource.GetExceptions().OfType<InvalidDataException>());
             } 
         }
 

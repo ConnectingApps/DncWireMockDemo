@@ -6,7 +6,6 @@ namespace ConnectingApps.IntegrationFixture.Logging
 {
     public class LogEntry
     {
-        private readonly dynamic _state;
         private readonly Lazy<string> _logLineCreator;
 
         public LogLevel LogLevel { get; }
@@ -20,7 +19,6 @@ namespace ConnectingApps.IntegrationFixture.Logging
             LogLevel = logLevel;
             EventId = eventId;
             Exception = exception;
-            _state = state;
             _logLineCreator = logLineCreator;
             LoggedObjects = state is IReadOnlyList<KeyValuePair<string, object>>
                 ? state 

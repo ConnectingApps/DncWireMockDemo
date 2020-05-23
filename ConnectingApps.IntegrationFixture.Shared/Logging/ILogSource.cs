@@ -1,4 +1,5 @@
-﻿using System.Collections.Concurrent;
+﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 
 namespace ConnectingApps.IntegrationFixture.Logging
@@ -16,5 +17,6 @@ namespace ConnectingApps.IntegrationFixture.Logging
         IReadOnlyList<KeyValuePair<string, object>> GetLoggedObjects();
         IEnumerable<KeyValuePair<string, T>> GetLoggedObjects<T>() where T : class;
         IEnumerable<string> GetLogLines();
+        IEnumerable<Exception> GetExceptions();
     }
 }

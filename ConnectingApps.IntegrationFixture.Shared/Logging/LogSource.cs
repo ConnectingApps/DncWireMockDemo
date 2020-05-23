@@ -30,6 +30,8 @@ namespace ConnectingApps.IntegrationFixture.Shared.Logging
 
         public IEnumerable<string> GetLogLines() => LogEntries.Select(l => l.LogLine);
 
+        public IEnumerable<Exception> GetExceptions() => LogEntries.Select(l => l.Exception);
+
         public IEnumerable<KeyValuePair<string, T>> GetLoggedObjects<T>() where T : class
         {
             return GetLoggedObjects()

@@ -1,4 +1,5 @@
-﻿using ConnectingApps.DncWireMockDemo.Models;
+﻿using System.IO;
+using ConnectingApps.DncWireMockDemo.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -27,6 +28,8 @@ namespace ConnectingApps.DncWireMockDemo.Controllers
             _logger.LogWarning("Warning Logged");
 
             _logger.LogInformation("This is the input {name}", value);
+
+            _logger.LogError(new InvalidDataException("Some exception message"),"Some Exception");
 
             return Ok($"{value.FirstName} {value.MiddleName} {value.LastName}");
         }
