@@ -34,6 +34,7 @@ namespace ConnectingApps.IntegrationFixtureTests
                     var request = mockServer.LogEntries.Select(a => a.RequestMessage).Single();
                     Assert.Contains("Hoi", request.RawQuery);
                     Assert.Equal(8, ((OkObjectResult)response.Result).Value);
+                    Assert.Equal(2, fixture.LogSource.GetCriticals().Count());
                 }
             }
         }
