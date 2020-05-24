@@ -70,7 +70,7 @@ namespace ConnectingApps.IntegrationFixtureTests
         [Fact]
         public async Task NoMiddleNamePutTest()
         {
-            using (var fixture = new Fixture<Startup>())
+            await using (var fixture = new Fixture<Startup>())
             {
                 var controller = fixture.Create<LogicController>();
                 var response = controller.Put(new Name()
