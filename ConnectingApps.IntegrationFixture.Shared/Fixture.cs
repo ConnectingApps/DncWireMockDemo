@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using ConnectingApps.IntegrationFixture.Logging;
-using ConnectingApps.IntegrationFixture.Shared.Customizers;
+using ConnectingApps.IntegrationFixture.Shared;
 using ConnectingApps.IntegrationFixture.Shared.Logging;
 using Microsoft.AspNetCore.TestHost;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using WireMock.Server;
 
 namespace ConnectingApps.IntegrationFixture
 {
@@ -42,6 +41,10 @@ namespace ConnectingApps.IntegrationFixture
                 });
                 whb.ConfigureTestServices(sc =>
                 {
+                    foreach (var mockedObject in _mockedObjects)
+                    {
+                        ReplaceDependency(sc,mockedObject.Value.MockType, mockedObject.Value.MockObject);
+                    }
                     _serviceProvider = sc.BuildServiceProvider();
                     serviceScope = _serviceProvider.CreateScope();
                 });

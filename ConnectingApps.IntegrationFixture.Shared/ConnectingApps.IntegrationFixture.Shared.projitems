@@ -13,6 +13,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Customizers\IConfigbuilderCustomizer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Customizers\JsonConfigBuilderCustomizer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Fixture.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)IntegrationFixtureException.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)IntegrationWebApplicationFactory.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Logging\ILogSource.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Logging\LogEntry.cs" />
@@ -21,5 +22,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Logging\TestLoggerProvider.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)RefitFixture.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)FixtureBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Validator.cs" />
   </ItemGroup>
 </Project>

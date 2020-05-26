@@ -5,10 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using ConnectingApps.DncWireMockDemo;
 using ConnectingApps.DncWireMockDemo.Controllers;
+using ConnectingApps.DncWireMockDemo.Services;
 using ConnectingApps.IntegrationFixture;
 using ConnectingApps.IntegrationFixture.Shared.Customizers;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using Moq;
 using Refit;
 using WireMock.RequestBuilders;
 using WireMock.ResponseBuilders;
@@ -33,7 +35,7 @@ namespace ConnectingApps.IntegrationFixtureTests
 
                     var request = mockServer.LogEntries.Select(a => a.RequestMessage).Single();
                     Assert.Contains("Hoi", request.RawQuery);
-                    Assert.Equal(8, ((OkObjectResult)response.Result).Value);
+                    Assert.Equal(8, ((OkObjectResult) response.Result).Value);
                     Assert.Equal(2, fixture.LogSource.GetCriticals().Count());
                 }
             }
@@ -63,7 +65,8 @@ namespace ConnectingApps.IntegrationFixtureTests
             {
                 using (var mockServer = fixture.FreezeServer("Google"))
                 {
-                    string assemblyDirectoryName = Path.GetDirectoryName(typeof(SearchEngineController).Assembly.Location);
+                    string assemblyDirectoryName =
+                        Path.GetDirectoryName(typeof(SearchEngineController).Assembly.Location);
                     // ReSharper disable once AssignNullToNotNullAttribute
                     var jsonPath = Path.Combine(assemblyDirectoryName, "data.json");
                     fixture.Customize(new JsonCustomizer(jsonPath));
@@ -75,7 +78,7 @@ namespace ConnectingApps.IntegrationFixtureTests
 
                     var request = mockServer.LogEntries.Select(a => a.RequestMessage).Single();
                     Assert.Contains("Hoi", request.RawQuery);
-                    Assert.Equal(8, ((OkObjectResult)response.Result).Value);
+                    Assert.Equal(8, ((OkObjectResult) response.Result).Value);
                     var configuration = fixture.Create<IConfiguration>();
                     Assert.Equal("JsonDummyValue", configuration["JsonDummy"]);
                 }
@@ -104,6 +107,44 @@ namespace ConnectingApps.IntegrationFixtureTests
             fluentMockServer.Given(Request.Create().UsingGet())
                 .RespondWith(Response.Create().WithBody(response, encoding: Encoding.UTF8)
                     .WithStatusCode(HttpStatusCode.OK));
+        }
+
+
+        [Fact]
+        public async Task GetTestFreeze()
+        {
+            // arrange
+            await using (var fixture = new Fixture<Startup>())
+            {
+                var service = fixture.Freeze<Mock<ISearchEngineService>>();
+                service.Setup(a => a.GetNumberOfCharactersFromSearchQuery(It.IsNotNull<string>()))
+                    .ReturnsAsync(8);
+
+                var controller = fixture.Create<SearchEngineController>();
+
+                // act
+                var response = await controller.GetNumberOfCharacters("Hoi");
+
+                // assert
+                Assert.Equal(8, ((OkObjectResult) response.Result).Value);
+                service.Verify(s => s.GetNumberOfCharactersFromSearchQuery("Hoi"), Times.Once);
+            }
+        }
+
+        [Fact]
+        public async Task GetViaRefitClientFreeze()
+        {
+            using (var fixture = new RefitFixture<Startup, ISearchEngine>(RestService.For<ISearchEngine>))
+            {
+                var service = fixture.Freeze<Mock<ISearchEngineService>>();
+                service.Setup(a => a.GetNumberOfCharactersFromSearchQuery(It.IsNotNull<string>()))
+                    .ReturnsAsync(8);
+
+                var refitClient = fixture.GetRefitClient();
+                var response = await refitClient.GetNumberOfCharacters("Hoi");
+                await response.EnsureSuccessStatusCodeAsync();
+                service.Verify(s => s.GetNumberOfCharactersFromSearchQuery("Hoi"), Times.Once);
+            }
         }
     }
 }
