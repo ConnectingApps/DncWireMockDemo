@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Net.Http;
 using Microsoft.AspNetCore.Mvc.Testing;
+using Microsoft.AspNetCore.TestHost;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace ConnectingApps.IntegrationFixture
 {
@@ -32,6 +34,13 @@ namespace ConnectingApps.IntegrationFixture
                     foreach (var configbuilderCustomizer in _configbuilderCustomizers)
                     {
                         configbuilderCustomizer.Customize(configBuilder);
+                    }
+                });
+                whb.ConfigureTestServices(sc =>
+                {
+                    foreach (var mockedObject in _mockedObjects)
+                    {
+                        ReplaceDependency(sc, mockedObject.Value.MockType, mockedObject.Value.MockObject);
                     }
                 });
             }).CreateClient(new WebApplicationFactoryClientOptions

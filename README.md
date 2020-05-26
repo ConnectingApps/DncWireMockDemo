@@ -51,7 +51,7 @@ To work with it, you need to setup the `ItemGroup` dependency in your test proje
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="ConnectingApps.IntegrationFixture" Version="3.1.5" />
+    <PackageReference Include="ConnectingApps.IntegrationFixture" Version="3.1.6" />
   </ItemGroup>
 ````
 
@@ -61,7 +61,7 @@ For .NET Core 2.1, it is typically:
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="2.1.3" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.6.1" />
-    <PackageReference Include="ConnectingApps.IntegrationFixture" Version="2.1.5" />
+    <PackageReference Include="ConnectingApps.IntegrationFixture" Version="2.1.6" />
     <PackageReference Include="xunit" Version="2.4.1" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.1">
       <PrivateAssets>all</PrivateAssets>
@@ -124,4 +124,44 @@ using (var fixture = new Fixture<Startup>())
     Assert.Contains(fixture.LogSource.GetLogLines(), a => a.Contains("This is the input"));
     Assert.Single(fixture.LogSource.GetExceptions().OfType<InvalidDataException>());
 } 
+````
+### Freeze Moq Mocks
+[Just like with AutoFixture](https://thomasardal.com/using-automoqcustomization-with-nunit-moq-and-autofixture/), IntegrationFixture supports the Freeze method since 3.1.6 and 2.1.6 method to Freeze mocks. For this, [Moq](https://www.nuget.org/packages/Moq/) needs to be installed in the test project. Once that is done, the mock can be used inside the test project to be verified at the end of the test. Here are some examples:
+
+````csharp
+// arrange
+await using (var fixture = new Fixture<Startup>())
+{
+    var service = fixture.Freeze<Mock<ISearchEngineService>>();
+    service.Setup(a => a.GetNumberOfCharactersFromSearchQuery(It.IsNotNull<string>()))
+        .ReturnsAsync(8);
+
+    var controller = fixture.Create<SearchEngineController>();
+
+    // act
+    var response = await controller.GetNumberOfCharacters("Hoi");
+
+    // assert
+    Assert.Equal(8, ((OkObjectResult) response.Result).Value);
+    service.Verify(s => s.GetNumberOfCharactersFromSearchQuery("Hoi"), Times.Once);
+}
+````
+
+````csharp
+// arrange
+using (var fixture = new RefitFixture<Startup, ISearchEngine>(RestService.For<ISearchEngine>))
+{
+    var service = fixture.Freeze<Mock<ISearchEngineService>>();
+    service.Setup(a => a.GetNumberOfCharactersFromSearchQuery(It.IsNotNull<string>()))
+        .ReturnsAsync(8);
+
+    var refitClient = fixture.GetRefitClient();
+
+    // act
+    var response = await refitClient.GetNumberOfCharacters("Hoi");
+    
+    // assert
+    await response.EnsureSuccessStatusCodeAsync();
+    service.Verify(s => s.GetNumberOfCharactersFromSearchQuery("Hoi"), Times.Once);
+}
 ````

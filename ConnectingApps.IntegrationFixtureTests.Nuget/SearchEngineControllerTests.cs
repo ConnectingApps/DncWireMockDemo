@@ -4,8 +4,10 @@ using System.Text;
 using System.Threading.Tasks;
 using ConnectingApps.DncWireMockDemo;
 using ConnectingApps.DncWireMockDemo.Controllers;
+using ConnectingApps.DncWireMockDemo.Services;
 using ConnectingApps.IntegrationFixture;
 using Microsoft.AspNetCore.Mvc;
+using Moq;
 using Refit;
 using WireMock.RequestBuilders;
 using WireMock.ResponseBuilders;
@@ -54,6 +56,22 @@ namespace ConnectingApps.IntegrationFixtureTests.Nuget
                     var request = mockServer.LogEntries.Select(a => a.RequestMessage).Single();
                     Assert.Contains("Hoi", request.RawQuery);
                 }
+            }
+        }
+
+        [Fact]
+        public async Task GetViaRefitClientFreeze()
+        {
+            using (var fixture = new RefitFixture<Startup, ISearchEngine>(RestService.For<ISearchEngine>))
+            {
+                var service = fixture.Freeze<Mock<ISearchEngineService>>();
+                service.Setup(a => a.GetNumberOfCharactersFromSearchQuery(It.IsNotNull<string>()))
+                    .ReturnsAsync(8);
+
+                var refitClient = fixture.GetRefitClient();
+                var response = await refitClient.GetNumberOfCharacters("Hoi");
+                await response.EnsureSuccessStatusCodeAsync();
+                service.Verify(s => s.GetNumberOfCharactersFromSearchQuery("Hoi"), Times.Once);
             }
         }
 
