@@ -75,6 +75,27 @@ namespace ConnectingApps.IntegrationFixtureTests.Nuget
             }
         }
 
+        [Fact]
+        public async Task GetTestFreeze()
+        {
+            // arrange
+            await using (var fixture = new Fixture<Startup>())
+            {
+                var service = fixture.Freeze<Mock<ISearchEngineService>>();
+                service.Setup(a => a.GetNumberOfCharactersFromSearchQuery(It.IsNotNull<string>()))
+                    .ReturnsAsync(8);
+
+                var controller = fixture.Create<SearchEngineController>();
+
+                // act
+                var response = await controller.GetNumberOfCharacters("Hoi");
+
+                // assert
+                Assert.Equal(8, ((OkObjectResult)response.Result).Value);
+                service.Verify(s => s.GetNumberOfCharactersFromSearchQuery("Hoi"), Times.Once);
+            }
+        }
+
 
         private void SetupStableServer(FluentMockServer fluentMockServer, string response)
         {
