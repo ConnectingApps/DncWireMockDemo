@@ -40,7 +40,7 @@ private void SetupStableServer(FluentMockServer fluentMockServer, string respons
 }
 ````
 
-> The type specified via Create<> is typically a controller class or an interface. This is because it has to be resolved via the DI of .NET Core. So use Create < SomeController> or Create< ISomeInterface>.
+> :warning: ⚠ **The type specified via Create<> is typically a controller class or an interface. This is because it has to be resolved via the DI of .NET Core. So use Create < SomeController> or Create< ISomeInterface>.**
 
 To work with it, you need to setup the `ItemGroup` dependency in your test project correctly, like done here:
 
