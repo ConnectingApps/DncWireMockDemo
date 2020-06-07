@@ -12,10 +12,15 @@ namespace ConnectingApps.GraphQlDemo.IntegrationTests
         [Fact]
         public async Task HelloTest()
         {
+            // arrange
             using (var graphQlFixture = new GraphQlFixture<Startup>("playground/.."))
             {
                 var client = graphQlFixture.GetClient();
+
+                // act
                 var response = await client.ExecuteQuery("{ greetings { hello }}");
+
+                // assert
                 string expectedJson = "{\"data\":{\"greetings\":{\"hello\":\"World\"}}}";
 
                 var actual = JToken.Parse(response.ResponseContent);
