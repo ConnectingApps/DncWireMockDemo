@@ -73,6 +73,7 @@ For .NET Core 2.1, it is typically:
     </PackageReference>
   </ItemGroup>
 ````
+> :warning: ⚠ **ReSharper and Test Runner may not directly detect the dependencies but this can be solved by reloading your project **
 
 For [Refit support](https://github.com/ConnectingApps/DncWireMockDemo#refit-support), you just need to a install a recent version of Refit. The specific version does not really matter.
 
@@ -167,5 +168,27 @@ using (var fixture = new RefitFixture<Startup, ISearchEngine>(RestService.For<IS
     // assert
     await response.EnsureSuccessStatusCodeAsync();
     service.Verify(s => s.GetNumberOfCharactersFromSearchQuery("Hoi"), Times.Once);
+}
+````
+
+### GraphQl Support
+In Version 3.1.7 and 2.1.7, GraphQl support was added. The following code uses Integration Fixture to do the test.  It works by creating a GraphQl client. After creation, a GraphQl query can be executed asynchronously. The output is a string (typically Json formatted). The output is verified with [FluentAssertions.Json](https://github.com/fluentassertions/fluentassertions.json#usage) but this is a personal preference and not a requirement for testing.
+A full example of such a test can be found [here](https://github.com/ConnectingApps/DncWireMockDemo/tree/master/ConnectingApps.GraphQlDemo.IntegrationTests.NuGet).
+
+````csharp
+using (var graphQlFixture = new GraphQlFixture<Startup>("playground/.."))
+{
+    var client = graphQlFixture.GetClient();
+
+    // act
+    var response = await client.ExecuteQuery("{ greetings { hello }}");
+
+    // assert
+    string expectedJson = "{\"data\":{\"greetings\":{\"hello\":\"World\"}}}";
+
+    var actual = JToken.Parse(response.ResponseContent);
+    var expected = JToken.Parse(expectedJson);
+    Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+    actual.Should().BeEquivalentTo(expected);
 }
 ````
