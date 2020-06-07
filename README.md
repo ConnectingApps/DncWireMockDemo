@@ -171,8 +171,8 @@ using (var fixture = new RefitFixture<Startup, ISearchEngine>(RestService.For<IS
 }
 ````
 
-### GraphQl Support
-In version 2.1.7 and 3.1.7, [GraphQl](https://graphql.org/) support was added. The following code uses IntegrationFixture to do the test.  It works by creating a GraphQl client. After creation, a GraphQl query can be executed asynchronously. The output is a string (typically Json formatted). The output is verified with [FluentAssertions.Json](https://github.com/fluentassertions/fluentassertions.json#usage) but this is a personal preference and not a requirement for testing.
+### GraphQL Support
+In version 2.1.7 and 3.1.7, [GraphQL](https://graphql.org/) support was added. The following code uses IntegrationFixture to do the test.  It works by creating a GraphQl client. After creation, a GraphQL query can be executed asynchronously. The output is a string (typically Json formatted). The output is verified with [FluentAssertions.Json](https://github.com/fluentassertions/fluentassertions.json#usage) but this is a personal preference and not a requirement for testing.
 A full example of such a test can be found [here](https://github.com/ConnectingApps/DncWireMockDemo/tree/master/ConnectingApps.GraphQlDemo.IntegrationTests.NuGet).
 
 ````csharp
