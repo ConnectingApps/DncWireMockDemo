@@ -55,7 +55,7 @@ To work with it, you need to setup the `ItemGroup` dependency in your test proje
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="ConnectingApps.IntegrationFixture" Version="3.1.6" />
+    <PackageReference Include="ConnectingApps.IntegrationFixture" Version="3.1.7" />
   </ItemGroup>
 ````
 
@@ -65,7 +65,7 @@ For .NET Core 2.1, it is typically:
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="2.1.3" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.6.1" />
-    <PackageReference Include="ConnectingApps.IntegrationFixture" Version="2.1.6" />
+    <PackageReference Include="ConnectingApps.IntegrationFixture" Version="2.1.7" />
     <PackageReference Include="xunit" Version="2.4.1" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.1">
       <PrivateAssets>all</PrivateAssets>
