@@ -50,9 +50,9 @@ namespace ConnectingApps.IntegrationFixture.Shared.GraphQl
 
         protected override void Dispose(bool disposing)
         {
+            base.Dispose(disposing);
             if (disposing)
             {
-                _factory.Dispose();
                 if (_httpClient.IsValueCreated)
                 {
                     _httpClient.Value.Dispose();
