@@ -1,7 +1,7 @@
 {
     "$schema": "http://json.schemastore.org/template",
     "author": "Daan Acohen",
-    "classifications": [ "Common", "Library", "C#" ],
+    "classifications": [ "Test", "xUnit", "Library","IntegrationTest" ],
     "identity": "ConnectingApps.Templates.IntegrationFixture21",
     "name": "Integration testing Library for .NET Core 2.1",
     "shortName": "integrationtest-21",
