@@ -6,8 +6,8 @@
     <PackageId>ConnectingApps.TestTemplates</PackageId>
     <Title>ConnectingApps Templates</Title>
     <Authors>Daan Acohen</Authors>
-    <Description>Templates for simplify your work, especially for test automation. First package included is integrationFixture: https://www.nuget.org/packages/ConnectingApps.IntegrationFixture </Description>
-    <PackageTags>dotnet-new;templates;contoso</PackageTags>
+    <Description>Templates for simplify your work, especially for test automation. First package included is an integrationFixture template: https://www.nuget.org/packages/ConnectingApps.IntegrationFixture</Description>
+    <PackageTags>dotnet-new;templates</PackageTags>
 
     <TargetFramework>netstandard2.0</TargetFramework>
 
@@ -18,8 +18,10 @@
     <Company>Connecting Apps</Company>
     <Copyright>Copyright ©. Connecting Apps. All rights reserved</Copyright>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
-    <RepositoryType>https://github.com/ConnectingApps/DncWireMockDemo</RepositoryType>
+    <RepositoryType></RepositoryType>
     <PackageReleaseNotes>Initial creation</PackageReleaseNotes>
+    <PackageProjectUrl>https://github.com/ConnectingApps/DncWireMockDemo#testtemplates</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/ConnectingApps/DncWireMockDemo</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>
