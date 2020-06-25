@@ -192,3 +192,7 @@ using (var graphQlFixture = new GraphQlFixture<Startup>("playground/.."))
     actual.Should().BeEquivalentTo(expected);
 }
 ````
+
+## TestTemplates
+
+Work in progress.
