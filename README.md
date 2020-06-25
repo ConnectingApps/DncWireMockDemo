@@ -202,7 +202,7 @@ dotnet new integrationtest-31
 dotnet restore
 ```
 
-If you use .NET 3.1 instead of 2.1, use this:
+If you use .NET 2.1 instead of 3.1, use this:
 
 ```bash
 dotnet new --install ConnectingApps.TestTemplates 
