@@ -195,4 +195,19 @@ using (var graphQlFixture = new GraphQlFixture<Startup>("playground/.."))
 
 ## TestTemplates
 
-Work in progress.
+You can use our [test templates](https://www.nuget.org/packages/ConnectingApps.TestTemplates) after installation and package restore. It uses IntegrationFixture as described [here](https://github.com/ConnectingApps/DncWireMockDemo#integrationfixture).
+```bash
+dotnet new --install ConnectingApps.TestTemplates 
+dotnet new integrationtest-31
+dotnet restore
+```
+
+If you use .NET 3.1 instead of 2.1, use this:
+
+```bash
+dotnet new --install ConnectingApps.TestTemplates 
+dotnet new integrationtest-21
+dotnet restore
+```
+
+
