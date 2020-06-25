@@ -1,10 +1,10 @@
 {
     "$schema": "http://json.schemastore.org/template",
     "author": "Daan Acohen",
-    "classifications": [ "Test", "xUnit", "Library","IntegrationTest" ],
-    "identity": "ConnectingApps.Templates.IntegrationFixture31",
-    "name": "Integration testing Library for .NET Core 3.1",
-    "shortName": "integrationtest-31",
+    "classifications": [ "xUnit","IntegrationTest" ],
+    "identity": "ConnectingApps.Templates.IntegrationFixture21",
+    "name": "Integration testing Library for .NET Core 2.1",
+    "shortName": "integrationtest-21",
     "tags": {
       "language": "C#",
       "type": "project"
