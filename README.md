@@ -194,7 +194,7 @@ using (var graphQlFixture = new GraphQlFixture<Startup>("playground/.."))
 ````
 ### .NET 5 Support (In preview)
 
-.NET 5 Support has been added but is (just like .NET 5 itself) in preview. An example of .NET 5 usage can be found [here](https://github.com/ConnectingApps/DncWireMockDemo/tree/dotnet5Support/50/ConnectingApps.IntegrationFixture50Tests.NuGet). This is how your `ItemGroup` element in your csproj should look like.
+.NET 5 Support has been added but is (just like .NET 5 itself) in preview. An example of .NET 5 usage can be found [here](https://github.com/ConnectingApps/DncWireMockDemo/tree/master/50/ConnectingApps.IntegrationFixture50Tests.NuGet). This is how your `ItemGroup` element in your csproj should look like.
 
 ````xml
 <ItemGroup>
