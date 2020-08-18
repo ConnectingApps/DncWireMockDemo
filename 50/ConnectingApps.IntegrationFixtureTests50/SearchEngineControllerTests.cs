@@ -97,7 +97,7 @@ namespace ConnectingApps.IntegrationFixtureTests50
         }
 
 
-        private void SetupStableServer(FluentMockServer fluentMockServer, string response)
+        private void SetupStableServer(WireMockServer fluentMockServer, string response)
         {
             fluentMockServer.Given(Request.Create().UsingGet())
                 .RespondWith(Response.Create().WithBody(response, encoding: Encoding.UTF8)

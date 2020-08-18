@@ -9,22 +9,12 @@ using WireMock.Server;
 
 namespace ConnectingApps.IntegrationFixture
 {
-    public class FixtureBase<TStartup> : IDisposable where TStartup : class
+    public partial class FixtureBase<TStartup> : IDisposable where TStartup : class
     {
         protected readonly IntegrationWebApplicationFactory<TStartup> _factory = new IntegrationWebApplicationFactory<TStartup>();
         protected readonly List<IConfigbuilderCustomizer> _configbuilderCustomizers = new List<IConfigbuilderCustomizer>();
         protected readonly Dictionary<string, (Type MockType, object MockObject)> _mockedObjects = new Dictionary<string, (Type MockType, object MockObject)>();
 
-        public FluentMockServer FreezeServer(string configurationParameter)
-        {
-            var server = FluentMockServer.Start();
-            var url = server.Urls.Single();
-            Customize(new DictionaryCustomizer(new Dictionary<string, string>()
-            {
-                {configurationParameter,url}
-            }));
-            return server;
-        }
 
         public void Customize(IConfigbuilderCustomizer configbuilderCustomizer)
         {
