@@ -192,6 +192,30 @@ using (var graphQlFixture = new GraphQlFixture<Startup>("playground/.."))
     actual.Should().BeEquivalentTo(expected);
 }
 ````
+### .NET 5 Support (In preview)
+
+.NET 5 Support has been added but is (just like .NET 5 itself) in preview. An example of .NET 5 usage can be found [here](https://github.com/ConnectingApps/DncWireMockDemo/tree/dotnet5Support/50/ConnectingApps.IntegrationFixture50Tests.NuGet). This is how your `ItemGroup` element in your csproj should look like.
+
+````xml
+<ItemGroup>
+    <PackageReference Include="ConnectingApps.IntegrationFixture" Version="5.0.7-dotnet5Support" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="3.1.7" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.6.1" />
+    <PackageReference Include="Moq" Version="4.14.5" />
+    <PackageReference Include="refit" Version="5.1.67" />
+    <PackageReference Include="xunit" Version="2.4.1" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.2">
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="coverlet.collector" Version="1.3.0">
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+</ItemGroup>
+````
+
+
 
 ## TestTemplates
 
