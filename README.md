@@ -73,6 +73,22 @@ For .NET Core 2.1, it is typically:
     </PackageReference>
   </ItemGroup>
 ````
+
+For .NET 5, it is typically:
+
+````xml
+<ItemGroup>
+    <PackageReference Include="ConnectingApps.IntegrationFixture" Version="5.0.7" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="5.0.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.8.0" />
+    <PackageReference Include="xunit" Version="2.4.1" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3">
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+</ItemGroup>
+````
+
 > :warning: ⚠ **ReSharper and Test Runner may not directly detect the dependencies but this can be solved by reloading your project **
 
 For [Refit support](https://github.com/ConnectingApps/DncWireMockDemo#refit-support), you just need to a install a recent version of Refit. The specific version does not really matter.
