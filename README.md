@@ -194,15 +194,15 @@ using (var graphQlFixture = new GraphQlFixture<Startup>("playground/.."))
 ````
 ### .NET 5 Support
 
-.NET 5 Support has been added but is (just like .NET 5 itself) in preview. An example of .NET 5 usage can be found [here](https://github.com/ConnectingApps/DncWireMockDemo/tree/master/50/ConnectingApps.IntegrationFixture50Tests.NuGet). This is how your `ItemGroup` element in your csproj should look like.
+.NET 5 Support has been added. An example of .NET 5 usage can be found [here](https://github.com/ConnectingApps/DncWireMockDemo/tree/master/50/ConnectingApps.IntegrationFixture50Tests.NuGet). This is how your `ItemGroup` element in your csproj should look like.
 
 ````xml
 <ItemGroup>
     <PackageReference Include="ConnectingApps.IntegrationFixture" Version="5.0.7" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="3.1.7" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.6.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="5.0.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.8.0" />
     <PackageReference Include="xunit" Version="2.4.1" />
-    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.2">
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3">
         <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         <PrivateAssets>all</PrivateAssets>
     </PackageReference>
