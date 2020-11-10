@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
     <IsPackable>true</IsPackable>
-    <Version>5.0.7-dotnet5Support</Version>
+    <Version>5.0.7</Version>
     <OutputType>Dll</OutputType>
     <Description>An AutoFixture inspired package to create instances for integration testing (not unit testing). Just create an instance of the Fixture class and this library does the work for you to trigger your code in the Startup and Program class. There is a create method to create a test instance and a freeze method to create external dependencies (services) with WireMock.NET .</Description>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
@@ -20,9 +20,9 @@
 
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="3.1.7" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.6.1" />
-    <PackageReference Include="WireMock.Net" Version="1.2.18" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="5.0.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.8.0" />
+    <PackageReference Include="WireMock.Net" Version="1.3.6" />
   </ItemGroup>
 
 
