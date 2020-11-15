@@ -244,4 +244,14 @@ dotnet new integrationtest-21
 dotnet restore
 ```
 
+We now have .NET 5 support too.
+
+If you use .NET Core 5.0
+
+```bash
+dotnet new --install ConnectingApps.TestTemplates 
+dotnet new integrationtest-50
+dotnet restore
+```
+
 
