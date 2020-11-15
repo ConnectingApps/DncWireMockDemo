@@ -2,11 +2,11 @@
 
   <PropertyGroup>
     <PackageType>Template</PackageType>
-    <PackageVersion>1.0</PackageVersion>
+    <PackageVersion>2.0.0</PackageVersion>
     <PackageId>ConnectingApps.TestTemplates</PackageId>
     <Title>ConnectingApps Templates</Title>
     <Authors>Daan Acohen</Authors>
-    <Description>Templates for simplify your work, especially for test automation. First package included is an integrationFixture template: https://www.nuget.org/packages/ConnectingApps.IntegrationFixture</Description>
+    <Description>Templates to simplify your work, especially for test automation. First package included is an integrationFixture template: https://www.nuget.org/packages/ConnectingApps.IntegrationFixture</Description>
     <PackageTags>dotnet-new;templates</PackageTags>
 
     <TargetFramework>netstandard2.0</TargetFramework>
@@ -22,6 +22,8 @@
     <PackageReleaseNotes>Initial creation</PackageReleaseNotes>
     <PackageProjectUrl>https://github.com/ConnectingApps/DncWireMockDemo#testtemplates</PackageProjectUrl>
     <RepositoryUrl>https://github.com/ConnectingApps/DncWireMockDemo</RepositoryUrl>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Version>2.0.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
