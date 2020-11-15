@@ -1,0 +1,12 @@
+{
+    "$schema": "http://json.schemastore.org/template",
+    "author": "Daan Acohen",
+    "classifications": [ "xUnit","IntegrationTest" ],
+    "identity": "ConnectingApps.Templates.IntegrationFixture50",
+    "name": "Integration testing Library for .NET 5",
+    "shortName": "integrationtest-50",
+    "tags": {
+      "language": "C#",
+      "type": "project"
+    }
+  }
