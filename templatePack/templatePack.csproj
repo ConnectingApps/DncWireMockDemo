@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <PackageType>Template</PackageType>
-    <PackageVersion>1.0</PackageVersion>
+    <PackageVersion>2.0</PackageVersion>
     <PackageId>ConnectingApps.TestTemplates</PackageId>
     <Title>ConnectingApps Templates</Title>
     <Authors>Daan Acohen</Authors>

@@ -43,13 +43,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConnectingApps.Templates.In
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "50", "50", "{7B2DF2E3-289A-4538-B8BC-5D8D74E794D1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConnectingApps.Dnc50Demo", "50\ConnectingApps.Dnc50Demo\ConnectingApps.Dnc50Demo.csproj", "{7D1C81FC-A507-4706-8725-19CE41602468}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConnectingApps.Dnc50Demo", "50\ConnectingApps.Dnc50Demo\ConnectingApps.Dnc50Demo.csproj", "{7D1C81FC-A507-4706-8725-19CE41602468}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConnectingApps.IntegrationFixtureTests50", "50\ConnectingApps.IntegrationFixtureTests50\ConnectingApps.IntegrationFixtureTests50.csproj", "{C596A4A0-0153-498D-AEB1-4376B82D1CEC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConnectingApps.IntegrationFixtureTests50", "50\ConnectingApps.IntegrationFixtureTests50\ConnectingApps.IntegrationFixtureTests50.csproj", "{C596A4A0-0153-498D-AEB1-4376B82D1CEC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConnectingApps.IntegrationFixture50", "50\ConnectingApps.IntegrationFixture50\ConnectingApps.IntegrationFixture50.csproj", "{D63D4877-6519-4306-9393-F72EC5B73A03}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConnectingApps.IntegrationFixture50", "50\ConnectingApps.IntegrationFixture50\ConnectingApps.IntegrationFixture50.csproj", "{D63D4877-6519-4306-9393-F72EC5B73A03}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConnectingApps.IntegrationFixture50Tests.NuGet", "50\ConnectingApps.IntegrationFixture50Tests.NuGet\ConnectingApps.IntegrationFixture50Tests.NuGet.csproj", "{A1D7C150-2ABD-4E99-AD37-E48F1071CE5D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConnectingApps.IntegrationFixture50Tests.NuGet", "50\ConnectingApps.IntegrationFixture50Tests.NuGet\ConnectingApps.IntegrationFixture50Tests.NuGet.csproj", "{A1D7C150-2ABD-4E99-AD37-E48F1071CE5D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConnectingApps.Templates.IntegrationFixture50", "templatePack\templates\ConnectingApps.Templates.IntegrationFixture50\ConnectingApps.Templates.IntegrationFixture50.csproj", "{814384AF-A807-4DD4-9550-CC84FAA87499}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
@@ -143,6 +145,10 @@ Global
 		{A1D7C150-2ABD-4E99-AD37-E48F1071CE5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A1D7C150-2ABD-4E99-AD37-E48F1071CE5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A1D7C150-2ABD-4E99-AD37-E48F1071CE5D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{814384AF-A807-4DD4-9550-CC84FAA87499}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{814384AF-A807-4DD4-9550-CC84FAA87499}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{814384AF-A807-4DD4-9550-CC84FAA87499}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{814384AF-A807-4DD4-9550-CC84FAA87499}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -158,6 +164,7 @@ Global
 		{C596A4A0-0153-498D-AEB1-4376B82D1CEC} = {7B2DF2E3-289A-4538-B8BC-5D8D74E794D1}
 		{D63D4877-6519-4306-9393-F72EC5B73A03} = {7B2DF2E3-289A-4538-B8BC-5D8D74E794D1}
 		{A1D7C150-2ABD-4E99-AD37-E48F1071CE5D} = {7B2DF2E3-289A-4538-B8BC-5D8D74E794D1}
+		{814384AF-A807-4DD4-9550-CC84FAA87499} = {367A1C12-F7FA-4301-B59E-B73EABEA9435}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {37BB08C1-74A5-42EE-BF4C-86BDE7162392}
