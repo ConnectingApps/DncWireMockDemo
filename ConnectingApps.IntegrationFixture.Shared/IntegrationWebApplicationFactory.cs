@@ -10,7 +10,7 @@ namespace ConnectingApps.IntegrationFixture
     {
         protected override void ConfigureWebHost(IWebHostBuilder builder)
         {
-            var types = typeof(TStartup).Assembly.GetTypes().Where(t => typeof(ControllerBase).IsAssignableFrom(t)).ToList();
+            var types = typeof(TStartup).Assembly.GetTypes().Where(t => !t.IsAbstract &&  typeof(ControllerBase).IsAssignableFrom(t)).ToList();
             foreach (var type in types)
             {
                 builder.ConfigureServices(sc => sc.AddTransient(type, type));

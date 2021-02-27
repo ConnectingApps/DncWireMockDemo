@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="ConnectingApps.IntegrationFixture" Version="5.0.7" />
+    <PackageReference Include="ConnectingApps.IntegrationFixture" Version="5.0.8" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="5.0.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.8.0" />
     <PackageReference Include="Moq" Version="4.14.7" />
