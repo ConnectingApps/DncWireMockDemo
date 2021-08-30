@@ -51,7 +51,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConnectingApps.IntegrationF
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConnectingApps.IntegrationFixture50Tests.NuGet", "50\ConnectingApps.IntegrationFixture50Tests.NuGet\ConnectingApps.IntegrationFixture50Tests.NuGet.csproj", "{A1D7C150-2ABD-4E99-AD37-E48F1071CE5D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConnectingApps.Templates.IntegrationFixture50", "templatePack\templates\ConnectingApps.Templates.IntegrationFixture50\ConnectingApps.Templates.IntegrationFixture50.csproj", "{814384AF-A807-4DD4-9550-CC84FAA87499}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConnectingApps.Templates.IntegrationFixture50", "templatePack\templates\ConnectingApps.Templates.IntegrationFixture50\ConnectingApps.Templates.IntegrationFixture50.csproj", "{814384AF-A807-4DD4-9550-CC84FAA87499}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "60", "60", "{45A99973-6727-41A6-90C5-C84CE2DD1452}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConnectingApps.Dnc60Demo", "60\ConnectingApps.Dnc60Demo\ConnectingApps.Dnc60Demo.csproj", "{59AA2499-2621-478C-8171-3EF417759CC8}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
@@ -149,6 +153,10 @@ Global
 		{814384AF-A807-4DD4-9550-CC84FAA87499}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{814384AF-A807-4DD4-9550-CC84FAA87499}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{814384AF-A807-4DD4-9550-CC84FAA87499}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59AA2499-2621-478C-8171-3EF417759CC8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59AA2499-2621-478C-8171-3EF417759CC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59AA2499-2621-478C-8171-3EF417759CC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59AA2499-2621-478C-8171-3EF417759CC8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -165,6 +173,7 @@ Global
 		{D63D4877-6519-4306-9393-F72EC5B73A03} = {7B2DF2E3-289A-4538-B8BC-5D8D74E794D1}
 		{A1D7C150-2ABD-4E99-AD37-E48F1071CE5D} = {7B2DF2E3-289A-4538-B8BC-5D8D74E794D1}
 		{814384AF-A807-4DD4-9550-CC84FAA87499} = {367A1C12-F7FA-4301-B59E-B73EABEA9435}
+		{59AA2499-2621-478C-8171-3EF417759CC8} = {45A99973-6727-41A6-90C5-C84CE2DD1452}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {37BB08C1-74A5-42EE-BF4C-86BDE7162392}
