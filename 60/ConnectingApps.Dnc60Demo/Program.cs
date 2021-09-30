@@ -18,6 +18,7 @@ builder.Services.AddSwaggerGen(c =>
     c.SwaggerDoc("v1", new() { Title = "ConnectingApps.Dnc60Demo", Version = "v1" });
 });
 var googleLocation = builder.Configuration["Google"];
+Console.WriteLine($"GOOGLELOCATION!! {googleLocation}");
 
 builder.Services.AddHttpClient<ISearchEngineService, SearchEngineService>(c =>
         c.BaseAddress = new Uri(googleLocation))

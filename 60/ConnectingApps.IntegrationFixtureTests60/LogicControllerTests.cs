@@ -8,14 +8,14 @@ using ConnectingApps.IntegrationFixture;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Extensions.Hosting;
-using Microsoft.VisualStudio.TestPlatform.TestHost;
+//using Microsoft.VisualStudio.TestPlatform.TestHost;
 //using Microsoft.VisualStudio.TestPlatform.TestHost;
 using Refit;
 using Xunit;
 
 namespace ConnectingApps.IntegrationFixtureTests60
 {
-    public class Class1
+    public class LogicControllerTests
     {
         class TodoApplication : WebApplicationFactory<Program>
         {
