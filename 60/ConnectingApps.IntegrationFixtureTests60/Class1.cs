@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Threading.Tasks;
-
+using ConnectingApps.Dnc60Demo.Models;
+using ConnectingApps.IntegrationFixture;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Extensions.Hosting;
+using Microsoft.VisualStudio.TestPlatform.TestHost;
 //using Microsoft.VisualStudio.TestPlatform.TestHost;
 using Refit;
 using Xunit;
@@ -24,7 +26,7 @@ namespace ConnectingApps.IntegrationFixtureTests60
         [Fact]
         public async Task NameTest()
         {
-            /*using (var fixture = new RefitFixture<Program, ILogicClient>(RestService.For<ILogicClient>))
+            using (var fixture = new RefitFixture<Program, ILogicClient>(RestService.For<ILogicClient>))
             {
                 var refitClient = fixture.GetRefitClient();
                 var response = await refitClient.Post(new Name
@@ -37,7 +39,7 @@ namespace ConnectingApps.IntegrationFixtureTests60
                 Assert.Contains("Alexander", response.Content);
                 Assert.Contains("Boris", response.Content);
                 Assert.Contains("Johnson", response.Content);
-            }*/
+            }
         }
     }
 }

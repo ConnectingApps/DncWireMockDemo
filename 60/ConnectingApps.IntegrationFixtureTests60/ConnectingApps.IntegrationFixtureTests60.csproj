@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ConnectingApps.Dnc60Demo\ConnectingApps.Dnc60Demo.csproj" />
+    <ProjectReference Include="..\ConnectingApps.IntegrationFixture60\ConnectingApps.IntegrationFixture60.csproj" />
   </ItemGroup>
 
 </Project>
