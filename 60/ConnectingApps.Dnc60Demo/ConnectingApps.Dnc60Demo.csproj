@@ -6,8 +6,7 @@
   </PropertyGroup>
 
    <ItemGroup>
-    <InternalsVisibleTo Include="ConnectingApps.IntegrationFixture" />
-    <InternalsVisibleTo Include="ConnectingApps.IntegrationFixtureTests60" />
+     <InternalsVisibleTo Include="ConnectingApps.IntegrationFixtureTests60" />
   </ItemGroup>
 
   <ItemGroup>
