@@ -225,10 +225,11 @@ using (var graphQlFixture = new GraphQlFixture<Startup>("playground/.."))
 </ItemGroup>
 ````
 
-### .NET 6
-Since this version is in preview, there is limited support for .NET 6 . Coding for .NET 6 works differently. .NET 6 applications often do not have a Startup class. A program class is available but is often generated based on `Program.cs` without defining a `public class Program` . This class is internal so you need to make your internals visible to use it. Example code can be found [here](https://github.com/ConnectingApps/DncWireMockDemo/tree/master/60).
+### .NET 6 Support
+Since this version is in preview, there is limited support for .NET 6 . Coding for .NET 6 works differently. .NET 6 applications often do not have a Startup class. A program class is available but is often generated based on `Program.cs` without defining a `public class Program` . This class is internal so you need to make your internals visible to use it. A more detailed explanation can be found [here](https://stackoverflow.com/a/68987433). Example code can be found [here](https://github.com/ConnectingApps/DncWireMockDemo/tree/master/60).
 
 This is how you can make internals visisble. This is something to be added in your application csproj.
+
 
 ````xml
 <ItemGroup>
