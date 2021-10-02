@@ -1,0 +1,38 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <LangVersion>preview</LangVersion>
+    <IsPackable>true</IsPackable>
+    <Version>6.0.8-rc1based</Version>
+    <OutputType>Dll</OutputType>
+    <Description>An AutoFixture inspired package to create instances for integration testing (not unit testing). Just create an instance of the Fixture class and this library does the work for you to trigger your code in the Startup and Program class. There is a create method to create a test instance and a freeze method to create external dependencies (services) with WireMock.NET .</Description>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <RepositoryUrl>https://github.com/ConnectingApps/DncWireMockDemo</RepositoryUrl>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Copyright>Copyright ©. Connecting Apps. All rights reserved</Copyright>
+    <PackageDescription>An AutoFixture inspired package to create instances for integration testing (not unit testing). Just create an instance of the Fixture class and this library does the work for you to trigger your code in the Startup and Program class. There is a create method to create a test instance and a freeze method to create external dependencies (services) with WireMock.NET </PackageDescription>
+    <PackageProjectUrl>https://github.com/ConnectingApps/DncWireMockDemo#integrationfixture</PackageProjectUrl>
+    <PackageId>ConnectingApps.IntegrationFixture</PackageId>
+    <Authors>Daan Acohen</Authors>
+    <Company>Connecting Apps</Company>
+    <Product>ConnectingApps.IntegrationFixture</Product>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="6.0.0-rc.1.21452.15" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.11.0" />
+    <PackageReference Include="WireMock.Net" Version="1.4.21" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+  <Import Project="..\..\ConnectingApps.IntegrationFixture.Shared\ConnectingApps.IntegrationFixture.Shared.projitems" Label="Shared" />
+
+
+</Project>
