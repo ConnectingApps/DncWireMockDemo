@@ -210,7 +210,7 @@ using (var graphQlFixture = new GraphQlFixture<Startup>("playground/.."))
 ````
 ### .NET 5 Support
 
-.NET 5 Support has been added. An example of .NET 5 usage can be found [here](https://github.com/ConnectingApps/DncWireMockDemo/tree/master/50/ConnectingApps.IntegrationFixture50Tests.NuGet). This is how your `ItemGroup` element in your csproj should look like.
+.NET 5 is supported. An example of .NET 5 usage can be found [here](https://github.com/ConnectingApps/DncWireMockDemo/tree/master/50/ConnectingApps.IntegrationFixture50Tests.NuGet). This is how your `ItemGroup` element in your csproj should look like.
 
 ````xml
 <ItemGroup>
@@ -225,7 +225,68 @@ using (var graphQlFixture = new GraphQlFixture<Startup>("playground/.."))
 </ItemGroup>
 ````
 
+### .NET 6
+Since this version is in preview, there is limited support for .NET 6 . Coding for .NET 6 works differently. .NET 6 applications often do not have a Startup class. A program class is available but is often generated based on `Program.cs` without defining a `public class Program` . This class is internal so you need to make your internals visible to use it. Example code can be found [here](https://github.com/ConnectingApps/DncWireMockDemo/tree/master/60).
 
+This is how you can make internals visisble. This is something to be added in your application csproj.
+
+````xml
+<ItemGroup>
+    <InternalsVisibleTo Include="ConnectingApps.IntegrationFixtureTests60" />
+    <InternalsVisibleTo Include="ConnectingApps.IntegrationFixture60Tests.NuGet" />
+</ItemGroup>
+````
+
+Here are the packages of the actual testing project you probably want to use.
+
+````xml
+<ItemGroup>
+  <PackageReference Include="ConnectingApps.IntegrationFixture" Version="6.0.8-rc1based" />
+  <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.11.0" />
+  <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="6.0.0-rc.1.21452.15" />
+  <PackageReference Include="Refit" Version="6.0.94" />
+  <PackageReference Include="Moq" Version="4.16.1" />
+  <PackageReference Include="refit" Version="6.0.94" />
+  <PackageReference Include="xunit" Version="2.4.1" />
+  <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+  </PackageReference>
+  <PackageReference Include="coverlet.collector" Version="1.3.0">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+  </PackageReference>
+</ItemGroup>
+````
+
+Moq and Refit may not be needed depending on what and how you want to test.
+
+Your code will be different too. As explained, using the Startup class may not be possible. So this is how your code should/could look like.
+
+````csharp
+[Fact]
+public async Task NameTest()
+{
+    using (var fixture = new RefitFixture<Program, ILogicClient>(RestService.For<ILogicClient>))
+    {
+        var refitClient = fixture.GetRefitClient();
+        var response = await refitClient.Post(new Name
+        {
+            FirstName = "Alexander",
+            MiddleName = "Boris",
+            LastName = "Johnson",
+        });
+        await response.EnsureSuccessStatusCodeAsync();
+        Assert.Contains("Alexander", response.Content);
+        Assert.Contains("Boris", response.Content);
+        Assert.Contains("Johnson", response.Content);
+    }
+}
+````
+
+> :warning: ⚠ Use the commandline to restore, build and test. Your tooling may me nice but can give errors because of limited support for .NET 6.
+
+As said, like .NET 6 itself, support for it is still in preview mode. If you experience any issues, report it [here](https://github.com/ConnectingApps/DncWireMockDemo/issues). 
 
 ## TestTemplates
 
