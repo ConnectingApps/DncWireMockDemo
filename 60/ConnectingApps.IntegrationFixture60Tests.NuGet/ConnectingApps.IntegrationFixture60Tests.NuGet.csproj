@@ -8,7 +8,6 @@
   <ItemGroup>
     <PackageReference Include="ConnectingApps.IntegrationFixture" Version="6.0.8-rc1based" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.11.0" />
-    <PackageReference Include="Microsoft.TestPlatform.TestHost" Version="16.11.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="6.0.0-rc.1.21452.15" />
     <PackageReference Include="Refit" Version="6.0.94" />
     <PackageReference Include="Moq" Version="4.16.1" />
