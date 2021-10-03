@@ -8,8 +8,6 @@ using ConnectingApps.IntegrationFixture;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Extensions.Hosting;
-//using Microsoft.VisualStudio.TestPlatform.TestHost;
-//using Microsoft.VisualStudio.TestPlatform.TestHost;
 using Refit;
 using Xunit;
 
